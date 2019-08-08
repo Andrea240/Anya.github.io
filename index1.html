@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/windy.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Пациэнт Аня</title>
+</head>
+<body>
+    <div class="box">
+        <div class="glass">
+        <p class="element"></p>
+        <div class="blockimg">
+        <ul id="wi-el" class="wi-container">
+            <li class="a1"><img src="img/Anya1.jpg" alt="Фото пациента"></li>
+            <li class="a1"><img src="img/Anya2.jpg" alt="Фото пациента"></li>
+            <li class="a1"><img src="img/Anya3.jpg" alt="Фото пациента"></li>
+            <li class="a1"><img src="img/Anya4.jpg" alt="Фото пациента"></li>
+            <li class="a1"><img src="img/Anya5.jpg" alt="Фото пациента"></li>
+
+        </ul>
+        </div>
+        <nav class="nav">
+            <span id="nav-prev">
+                <button><span> </span></button>
+           </span>
+            <span id="nav-next"> <button><span>>   </span></button></span>
+        </nav>
+        <p class="element2"></p>
+        <p class="element3"></p>
+        <div class="blue_box"></div>
+        <p class="element4"></p>
+        <p class="element5"></p>
+        <p class="element6"></p>
+        </div>
+    </div>
+    <script src="js/modernizr.custom.79639.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+    <script type="text/javascript" src="js/jquery.windy.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.glass').style.transition = '4s'
+            document.querySelector('.glass').style.left = '0px'
+            document.querySelector('.glass').style.top = '0px'
+
+        })
+        document.getElementById('nav-prev').textContent = '<'
+        document.getElementById('nav-next').textContent = '>'
+
+        var typed = new Typed(".element", {
+            // Waits 1000ms after typing "First"
+            strings: ["Родионовой  Ане"],
+            typeSpeed: 250,
+            showCursor: false,
+        });
+        var typed2 = new Typed(".element2", {
+            // Waits 1000ms after typing "First"
+            strings: ["Николаевне"],
+            typeSpeed: 250,
+            showCursor: false,
+        });
+        var typed3 = new Typed(".element3", {
+            // Waits 1000ms after typing "First"
+            strings: ["Дохуя умная"],
+            typeSpeed: 250,
+            showCursor: false,
+        });
+        var typed4 = new Typed(".element4", {
+            // Waits 1000ms after typing "First"
+            strings: ["Дохуя умная"],
+            typeSpeed: 250,
+            showCursor: false,
+        });
+        var typed5 = new Typed(".element5", {
+            // Waits 1000ms after typing "First"
+            strings: ["<strong><br>Симптомы: </br></strong>больной постоянно прав</br> и высказывает неопровержимые аргументы, факты."],
+            typeSpeed: 30,
+            showCursor: false,
+        });
+        var typed6 = new Typed(".element6", {
+            // Waits 1000ms after typing "First"
+            strings: ["<strong><br>Лечение: </br></strong> дать для изучения</br> любой информационный источник и оставить в покое на 3 месяца."],
+            typeSpeed: 30,
+            showCursor: false,
+        });
+        $(function() {
+
+        var $el = $( '#wi-el' ),
+            windy = $el.windy( {
+                // rotation and translation boundaries for the items transitions
+                boundaries : {
+                    rotateX : { min : 40 , max : 90 },
+                    rotateY : { min : -15 , max : 45 },
+                    rotateZ : { min : -10 , max : 10 },
+                    translateX : { min : -400 , max : 400 },
+                    translateY : { min : -400 , max : 400 },
+                    translateZ : { min : 350 , max : 550 }
+                }
+            } ),
+            allownavnext = false,
+            allownavprev = false;
+
+        $( '#nav-prev' ).on( 'mousedown', function( event ) {
+
+            allownavprev = true;
+            navprev();
+
+        } ).on( 'mouseup mouseleave', function( event ) {
+
+            allownavprev = false;
+
+        } );
+
+        $( '#nav-next' ).on( 'mousedown', function( event ) {
+
+            allownavnext = true;
+            navnext();
+
+        } ).on( 'mouseup mouseleave', function( event ) {
+
+            allownavnext = false;
+
+        } );
+
+        function navnext() {
+            if( allownavnext ) {
+                windy.next();
+                setTimeout( function() {	
+                    navnext();
+                }, 150 );
+            }
+        }
+
+        function navprev() {
+            if( allownavprev ) {
+                windy.prev();
+                setTimeout( function() {	
+                    navprev();
+                }, 150 );
+            }
+        }
+
+        });
+    </script>
+</body>
+</html>
